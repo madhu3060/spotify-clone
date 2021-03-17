@@ -1,0 +1,42 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Catamaran&display=swap'); */
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+#FooterBlock {
+  background-color: black;
+}
+.FooterLogo svg {
+  fill: #fff;
+  width: 106px;
+  margin: 80px;
+}
+#FooterBlock1 {
+  display: flex;
+}
+p {
+  color: gray;
+  font-weight: bold;
+}
+#FooterBlock1 ul {
+  margin: 40px;
+  margin-top: 80px;
+}
+#FooterBlock1 ul li {
+  list-style: none;
+  padding: 10px;
+}
+#FooterBlock1 ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+#FooterBlock1 ul li a:hover {
+  color: green;
+}
+.FooterMenu {
+  display: flex;
+}
+.SocialMediaLinks ul{
+  display: flex;
+  padding-left: 60px;
+  font-size: 40px;
+
+}
