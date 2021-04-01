@@ -13,20 +13,38 @@ import Signin from "./components/SliderComponents/AuthComponenet/Signin";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import firebase from "./firebase";
+import PasswordReset from "./components/SliderComponents/AuthComponenet/PasswordReset";
+import PhoneAuth from "./components/SliderComponents/AuthComponenet/PhoneAuth";
 
 class App extends Component {
+  state = {
+    userInfo: "",
+  };
+  async componentDidMount() {
+    await firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ userInfo: user });
+      } else {
+        this.setState({ userInfo: "" });
+      }
+    });
+  }
   render() {
+    console.log(this.state.userInfo);
     return (
       <Fragment>
         <Router>
           <header>
-            <SpotifyNavbar />
+            <SpotifyNavbar user={this.state.userInfo} />
           </header>
           <ToastContainer />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/signin" exact component={Signin} />
             <Route path="/signup" exact component={Signup} />
+            <Route path="/password-reset" exact component={PasswordReset} />
+            <Route path="/phone-auth" exact component={PhoneAuth} />
             <Route path="*" component={PageNotFound} />
           </Switch>
           <footer>

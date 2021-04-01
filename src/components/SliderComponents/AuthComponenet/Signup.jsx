@@ -28,13 +28,20 @@ class Signup extends Component {
         let message=`Verfication mails has been send to ${email}please confirm i and signin...`;
         toast.success(message);
 
-        userData.user.updateProfile({
+        await userData.user.updateProfile({
             displayName:profile,
             photoURL:`http://www.gravatar.com/avatar/ (${md5(email)}) ?d=identicon`
 
         })
        
-        console.log(userData);
+        //store information into firebase
+        await firebase.database().ref("/users "+ userData.user.uid).set({
+            email:userData.user.email,
+            photoURL:userData.user.photoURL,
+            profile:userData.user.displayName,
+            date:new Date().toLocaleDateString(),
+
+        });
         }
         catch(err) {
             console.log(err);
